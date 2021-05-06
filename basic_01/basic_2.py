@@ -44,11 +44,11 @@
 # count = 0
 # while stock_buy:
 #     count = count + 1
-#
+
 #     if count == 10:
-#         #break
+#         # break
 #         stock_buy = False
-#
+
 #     print(count)
 
 #2.3.4 연습문제
