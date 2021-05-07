@@ -3,9 +3,23 @@ from PyQt5.QAxContainer import *
 class Kiwoom(QAxWidget):
     def __init__(self):
         super().__init__()
-        print("Kiwoom() class start")
 
-        self.get_ocx_instance() # OCX방식을 파이썬에 사용할 수 있게 반환해주는 함수 실행
+        print("Kiwoom 클래스 입니다")
 
-    def get_ocx_instance(self):
-        self.setControl("KHOPENAPI.KHOpenAPICtrl.1") # 레지스트리에 저장된 API 불러오기
+        self.get_ocx_insatance()
+        self.event_slots()
+
+        self.signal_login_commConnect()
+
+
+    def get_ocx_insatance(self):
+        self.setControl("KHOPENAPI.KHOpenAPICtrl.1")
+
+    def event_slots(self):
+        self.OnEventConnect.connect(self.login_slots)
+
+    def login_slots(self, errCode):
+        print(errCode)
+
+    def signal_login_commConnect(self):
+        self.dynamicCall('CommConnect()')
